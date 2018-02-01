@@ -21,7 +21,7 @@ def encrypt(m, e, n):
     return pow(m, e, n)
 
 
-def decrypt(C, d):
+def decrypt(C, d, n):
     return pow(C, d, n)
 
 
@@ -39,9 +39,9 @@ m = 110101101101101101110110
 
 C = encrypt(m, e, n)
 
-print(C)
+print("Ciphertext: ", C)
 
-print(decrypt(C, d))
+print("Plaintext: ", decrypt(C, d, n))
 
 
 
