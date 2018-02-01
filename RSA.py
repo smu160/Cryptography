@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 31 17:17:57 2018
-
-@author: saveliyyusufov
-"""
-
 import subprocess
 
 
@@ -25,12 +17,12 @@ def modInverse(a, m):
         return x % m
 
 
-def ecnrypt(m, e, n):
+def encrypt(m, e, n):
     return pow(m, e, n)
 
 
 def decrypt(C, d):
-    return pow(C, d)
+    return pow(C, d, n)
 
 
 p = subprocess.run(["openssl", "prime", "-generate", "-bits", "2048"], stdout=subprocess.PIPE)
@@ -43,11 +35,13 @@ n = p * q
 phi_n = (p - 1) * (q - 1)
 d = modInverse(e, phi_n)
 
-m = 5356858
+m = 110101101101101101110110
 
-C = pow(m, e, n)
+C = encrypt(m, e, n)
 
-print(pow(C, d, n))
+print(C)
+
+print(decrypt(C, d))
 
 
 
